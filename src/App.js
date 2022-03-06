@@ -1,30 +1,39 @@
+import React, { Component } from "react";
+
 function App() {
-  const Users = [
-    {
-      name: "Taro",
-      age: 23,
-    },
-    {
-      name: "Hanako",
-      age: 34,
-    },
-  ];
   return (
     <>
-      {Users.map((user, index) => {
-        return <User key={index} name={user.name} age={user.age} />;
-      })}
+      <Counter></Counter>
     </>
   );
 }
 
-const User = (props) => {
-  const { name, age } = props;
-  return (
-    <div>
-      Hi, I'm {name} , and {age} years old
-    </div>
-  );
-};
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+  }
+
+  handlePlus = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  handleMinus = () => {
+    this.setState({ count: this.state.count - 1 });
+    console.log();
+  };
+
+  render() {
+    return (
+      <React.Fragment>
+        <div>{this.state.count}</div>
+        <button onClick={this.handlePlus}>+1</button>
+        <button onClick={this.handleMinus}>-1</button>
+      </React.Fragment>
+    );
+  }
+}
 
 export default App;
